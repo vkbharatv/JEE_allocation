@@ -8,7 +8,7 @@ def prepare_merit(data_r: pd.DataFrame):
         (data_r["HSC_PER"] >= 60)
         & (data_r["SSC_PER"] >= 60)
         & (data_r["HSC_PCM_PER"] >= 60)
-        & (data_r["JEEE_SCORE"] >= 85)
+        & (data_r["JEEE_SCORE"] >= 90)
     ]
 
     clean_data = clean_data.sort_values(
