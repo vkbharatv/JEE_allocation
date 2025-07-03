@@ -1,4 +1,5 @@
 import pandas as pd
+from IPython.display import display
 
 
 def prepare_merit(data_r: pd.DataFrame):
@@ -128,7 +129,7 @@ def save_data(data: pd.DataFrame, data_r: pd.DataFrame, allocations: pd.DataFram
         data["ALLOCATED"].notna()
     ]["JEEE_SCORE"].median()
 
-    print(analysis_data)
+    display(analysis_data)
 
     with pd.ExcelWriter("Final.xlsx") as writer:
         data.to_excel(writer, sheet_name="Compleate Allocation", index=False)
@@ -151,7 +152,7 @@ def save_data(data: pd.DataFrame, data_r: pd.DataFrame, allocations: pd.DataFram
             & (data["LICAI(DS)"] == 0)
         ].to_excel(writer, sheet_name="MERIT_confirmnd", index=False)
 
-    return print("\nData Saved with Fina name 'Final.xlsx'\n")
+    return print("\nData Saved with Final name 'Final.xlsx'\n")
 
 
 def allocate_branches(clean_data: pd.DataFrame, allocation_t: dict):
