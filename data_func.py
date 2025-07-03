@@ -8,7 +8,7 @@ def prepare_merit(data_r: pd.DataFrame):
         (data_r["HSC_PER"] >= 60)
         & (data_r["SSC_PER"] >= 60)
         & (data_r["HSC_PCM_PER"] >= 60)
-        & (data_r["JEEE_SCORE"] >= 90)
+        & (data_r["JEEE_SCORE"] >= 85)
     ]
 
     clean_data = clean_data.sort_values(
@@ -128,7 +128,7 @@ def save_data(data: pd.DataFrame, data_r: pd.DataFrame, allocations: pd.DataFram
         data["ALLOCATED"].notna()
     ]["JEEE_SCORE"].median()
 
-    display(analysis_data)
+    print(analysis_data)
 
     with pd.ExcelWriter("Final.xlsx") as writer:
         data.to_excel(writer, sheet_name="Compleate Allocation", index=False)
@@ -168,7 +168,7 @@ def allocate_branches(clean_data: pd.DataFrame, allocation_t: dict):
         "LICAI(AI)": 0,
         "LICAI(DS)": 0,
     }
-    for row in range(1, max_row):
+    for row in range(0, max_row):
         pref.clear()
         pref = {
             "PREF1": clean_data.iloc[row]["PREF1"],
@@ -198,4 +198,3 @@ def allocate_branches(clean_data: pd.DataFrame, allocation_t: dict):
     allocations = clean_data
 
     return allocations
-

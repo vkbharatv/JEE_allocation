@@ -1,5 +1,5 @@
-import pandas as pf
 from data_func import *
+
 data_raw = pd.read_excel("MasterData.xlsx")
 
 cleaned_data = prepare_merit(data_raw)
